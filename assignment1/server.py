@@ -48,12 +48,30 @@ def handle_connection( conn, addr ):
         # check status
         if status == 0:
             # add both number together and send back to the client
-            print 'adding', numbers[0], '+', numbers[1]
+            result = long(numbers[0]) + long(numbers[1])
+            print 'adding', numbers[0], '+', numbers[1], '=', result
+
+            # send the result to the client
+            send_number( conn, result )
+
         else:
             break
 
     # close the connection when finished
     conn.close()
+
+def send_number( conn,  num ):
+    ''' 
+    sends a given number of the socket connection
+    '''
+    # figure out the header size
+    header_size = '%016d' % len(str(num))
+    
+    # send the header
+    conn.send(header_size)
+
+    # send the number
+    conn.send(str(num))
 
 def recv_header( conn ):
     '''
@@ -96,9 +114,12 @@ def read_socket( conn, size ):
     '''
     This function reads the given size from the socket and returns the data
     '''
-    
-    data = conn.recv( size )
-    
+    data = '' 
+
+    while size > 0:
+        data += conn.recv( size )
+        size -= len(data) 
+
     return data
 
 def main():
@@ -108,7 +129,7 @@ def main():
     print 'adding server'
 
     # create the listen socket
-    sock = create_listen_socket( socket.gethostname(), 54321 )
+    sock = create_listen_socket( socket.gethostname(), 62000 )
 
     # await for a connection
     while True:

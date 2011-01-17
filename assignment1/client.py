@@ -3,7 +3,7 @@
 import socket
 
 host ='block115384-uav.blueboxgrid.com'
-port = 54321
+port = 62000 
 
 size = 1024
 
@@ -18,9 +18,11 @@ print h
 s.send(h)
 s.send('12345')
 
-h = '%032d' % len(number2)
+h = '%016d' % len(number2)
 s.send(h)
 s.send('4321')
-s.recv(1024)
-s.close()
+data =  s.recv(1024)
 print 'Received:', data
+data =  s.recv(1024)
+print 'Received:', data
+s.close()
