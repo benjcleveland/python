@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+'''
+Adding server - Adds two number from the client then sends back the result
+
+Author - Ben Cleveland
+'''
+
 from libsocket import *
 from threading import Thread
 

@@ -1,5 +1,12 @@
 #!/usr/bin/python
 
+'''
+Adding client - Gets two numbers from the user and send them to the server,
+                recieves and displays the result.
+
+Author - Ben Cleveland
+'''
+
 import libsocket
 
 
@@ -36,11 +43,12 @@ def add_numbers( sock ):
 
 def get_user_number( disp_str ):
     ''' 
-    Getsa number from the user
+    Gets a number from the user
     '''
     status = 0 
     number = raw_input(disp_str)
 
+    # try to conver the number to a float
     try:
         float(number)
     except:
@@ -48,6 +56,7 @@ def get_user_number( disp_str ):
         status = -1
     
     return (status, number)
+
 def menu():
     '''
     Display the user input menu

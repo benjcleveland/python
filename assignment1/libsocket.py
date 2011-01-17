@@ -1,4 +1,8 @@
 #!/usr/bin/python
+'''
+Module for socket functions that are shared between the client and server
+Author - Ben Cleveland
+'''
 
 import socket
 
@@ -82,8 +86,9 @@ def recv_number( conn, size ):
         print 'Invalid number length', len(number), ', expected size', size, 'closing connection...'    
         status = -1
 
+    # try to convert the number to a float
     try:
-        n = float(number)
+        float(number)
     except:
         print 'Unable to convert number', number, 'closing connection...'
         status = -1
