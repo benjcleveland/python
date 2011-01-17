@@ -10,6 +10,7 @@ def handle_connection( conn, addr ):
     
     status = 0
     numbers = [0,0]
+
     print 'Spawned thread for ', addr
 
     # do nothing for now
@@ -18,18 +19,19 @@ def handle_connection( conn, addr ):
         for i in range(2):
             # read the header
             (status, msg_length) = recv_header( conn )
-            if status == 0:
+            m_length = long(msg_length)
+            if status == 0 and m_length > 0:
                 # read the number
-                (status, numbers[i]) = recv_number( conn, long(msg_length ))
+                (status, numbers[i]) = recv_number( conn, m_length )
                 if status != 0:
                     break
             else:
                 break
 
         # check status
-        if status == 0:
+        if status == 0 and m_length > 0:
             # add both number together and send back to the client
-            result = long(numbers[0]) + long(numbers[1])
+            result = float(numbers[0]) + float(numbers[1])
             print 'adding', numbers[0], '+', numbers[1], '=', result
 
             # send the result to the client
@@ -39,6 +41,8 @@ def handle_connection( conn, addr ):
             break
 
     # close the connection when finished
+    print 'Thread for', addr, 'exiting...'
+
     conn.close()
 
 def main():
