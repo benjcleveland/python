@@ -71,6 +71,15 @@ The current time is %s
 </html>
 """
 
+PYTHON_EXEC =\
+"""<html>
+<head><title>%s</title></head>
+<body>
+%s
+</body>
+</html>
+"""
+
 DIRECTORY_LINE = '<a href="%s">%s</a><br>'
 
 def server_socket(host, port):
@@ -110,18 +119,22 @@ def get_file(path):
     finally: 
         f.close()
 
+def exec_python(path):
+    # execute a python file
+    out = subprocess.Popen(path, stdout=subprocess.PIPE).communicate()[0]
+
+    return PYTHON_EXEC % (path, out)
+
 def get_content(uri):
     print 'fetching:', uri
     try:
         path = '.' + uri
         if uri == '/time':
             return(200, 'text/html', list_time(uri))
-        if uri[-3:] == '.py':
-            print 'this is a python file'
 
-            l = subprocess.Popen(path)
-            print 'popen',l
-            return (200, 'text/html', TIME_LISTING &l)
+        if os.path.splitext(uri)[1] == '.py': # this is a python file, try to execute it
+            return (200, 'text/html', exec_python(path) )
+
         if os.path.isfile(path):
             return (200, get_mime(uri), get_file(path))
         if os.path.isdir(path):
