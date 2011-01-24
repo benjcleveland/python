@@ -15,6 +15,7 @@
 #   3 hours making it prettier & more pythonic
 #
 # updated for UW Internet Programming in Python, by Brian Dorsey
+# updagted for assignment 2 by Ben Cleveland
 #
 
 import os, socket, sys, datetime, subprocess
