@@ -131,11 +131,9 @@ def get_content(uri):
         path = '.' + uri
         if uri == '/time':
             return(200, 'text/html', list_time(uri))
-
-        if os.path.splitext(uri)[1] == '.py': # this is a python file, try to execute it
-            return (200, 'text/html', exec_python(path) )
-
         if os.path.isfile(path):
+            if os.path.splitext(uri)[1] == '.py': # this is a python file, try to execute it
+                return (200, 'text/html', exec_python(path) )
             return (200, get_mime(uri), get_file(path))
         if os.path.isdir(path):
             if(uri.endswith('/')):
