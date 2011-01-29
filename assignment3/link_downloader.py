@@ -60,7 +60,6 @@ def download_links(directory, links ):
             file.close()
 
 def main():
-    print 'in main'
 
     print 'Getting the class webpage...'
     class_html = get_html( CLASS_URL )
