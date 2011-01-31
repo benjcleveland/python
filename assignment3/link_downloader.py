@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 '''
-Description - This program follows and downloads all the links from the class syllabus on the class website.
-              It saves the data under the current working directory by week.
+Description - This program finds and downloads all content from the links on the class syllabus i
+              on the class website.  It saves the content into a folder under the current working
+              directory by week.
 
 Author - Ben Cleveland
 

@@ -1,2 +1,6 @@
+This is a brief description of each assignment
+
 Assignment 1 - Client and server that takes two numbers and adds them together
 Assignment 2 - Updated thirty minute webserver to execute python files
+Assignment 3 - link_downloader - finds and follows each link on the course syllabus,
+               downloads the content and saves it into a folder by week.
