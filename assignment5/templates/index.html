@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/">
+  <head>
+    <title>$title</title>
+  </head>
+  <body class="index">
+    <div id="header">
+      <h1>$title</h1>
+    </div>
+
+    <p>Welcome to the amazing python book library!</p>
+
+    <ol py:if="links">
+      <li py:for="link in reversed(links)">
+        <a href="book?id=${link.id}">${link.title}</a>
+      </li>
+    </ol>
+
+    <div id="footer">
+      <hr />
+      <p class="legalese">Created by Ben Cleveland</p>
+    </div>
+  </body>
+</html>
