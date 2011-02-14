@@ -10,15 +10,14 @@ import cherrypy
 import genshi.template
 import os.path
 
-
 class booksite(object):
 
     def __init__(self):
         '''
         initialize the class
         '''
-        self.loader = genshi.template.TemplateLoader( os.path.join( os.path.dirname(__file__), 'templates'),
-                auto_reload=True)
+        # hard code the path to the templates to make running in daemon mode easier
+        self.loader = genshi.template.TemplateLoader( '/home/cleveb/git/python/assignment5/templates', auto_reload=True)
 
         # get a copy of the database
         self.bdb = bookdb.BookDB()
@@ -57,5 +56,10 @@ class booksite(object):
 booksite_config  = os.path.join(os.path.dirname(__file__), 'book_site.conf')
 
 if __name__ == '__main__':
+
+    # start the process as a daemon
+    d = cherrypy.process.plugins.Daemonizer(cherrypy.engine)
+    d.subscribe()
+
     # start the cherry py web framework
     cherrypy.quickstart(booksite(), config=booksite_config)
