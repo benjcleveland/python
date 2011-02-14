@@ -43,7 +43,7 @@ class booksite(object):
 
         if not bookdb.database.has_key(id):
             # make sure this key is in the database
-            raise cherrypy.HTTPError(404,'404 Not Found')
+            raise cherrypy.HTTPError(400,'400 Bad Request - Invalid syntax')
         
         # get the title info from the database
         title_info = bookdb.BookDB().title_info(id)
