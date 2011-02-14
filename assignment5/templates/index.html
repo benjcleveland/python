@@ -8,9 +8,10 @@
     </div>
 
     <p>Welcome to the amazing python book library!</p>
+    <p>Click on a link below for more information about the book</p>
 
     <ol py:if="links">
-      <li py:for="link in reversed(links)">
+      <li py:for="link in links">
         <a href="book?id=${link.id}">${link.title}</a>
       </li>
     </ol>

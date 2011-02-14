@@ -7,11 +7,14 @@
       <h1>$title</h1>
     </div>
 
-    <ol py:if="book">
-      <li py:for="item in (book)">
-        <a>${item} - ${book[item]}</a>
-      </li>
-    </ol>
+    <p>Here is the information you requested!</p>
+
+    <table border="1" cellpadding="5" summary="Information about the book" py:if="book">
+        <tr py:if="'title' in book"><td>Title</td><td>${book['title']}</td></tr>
+        <tr py:if="'author' in book"><td>Author</td><td>${book['author']}</td></tr>
+        <tr py:if="'publisher' in book"><td>Publisher</td><td>${book['publisher']}</td></tr>
+        <tr py:if="'isbn' in book"><td>ISBN</td><td>${book['isbn']}</td></tr>
+    </table>
 
     <div id="footer">
       <hr />
