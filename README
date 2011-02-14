@@ -5,4 +5,4 @@ Assignment 2 - Updated thirty minute webserver to execute python files
 Assignment 3 - link_downloader - finds and follows each link on the course syllabus,
                downloads the content and saves it into a folder by week.
 Assignment 4 - Simple python script that is run from Apache to add two numbers and return the result in JSON               
-Assignment 5 - Simple cherrypy application that uses a psuedo database to display information about books
+Assignment 5 - Simple cherrypy application that uses a psuedo database to display information about books.  Uses genshi for html templating.
