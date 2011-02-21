@@ -6,3 +6,4 @@ Assignment 3 - link_downloader - finds and follows each link on the course sylla
                downloads the content and saves it into a folder by week.
 Assignment 4 - Simple python script that is run from Apache to add two numbers and return the result in JSON               
 Assignment 5 - Simple cherrypy application that uses a psuedo database to display information about books.  Uses genshi for html templating.
+Assignment 6 - Django tutorial running through apache.
