@@ -1,6 +1,6 @@
 # Django settings for mysite project.
 
-DEBUG = True 
+DEBUG = False 
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -45,7 +45,7 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = 'http://block115384-uav.blueboxgrid.com/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'li1&uusd8we&#zyscp5)d&st5qwtf4xo*z08webx9=7&&aecab'
