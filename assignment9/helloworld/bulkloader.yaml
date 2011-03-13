@@ -21,13 +21,62 @@ python_preamble:
 - import: google.appengine.ext.db
 - import: google.appengine.api.datastore
 - import: google.appengine.api.users
+- import: models
 
 transformers:
 - kind: Game 
   connector: csv
   property_map:
+    - property: __key__
+      external_name: id
+
     - property: title
       external_name: title
 
     - property: publisher
       external_name: publisher
+    
+    - property: year_published
+      external_name: year_published
+
+    - property: description
+      external_name: description
+
+    - property: last_played
+      external_name: last_played
+      import_transform: transform.import_date_time('%Y-%m-%d %H:%M:%S')
+
+    - property: image_name
+      external_name: image_name
+
+    - property: genre
+      external_name: genre
+
+    - property: maxplayers
+      external_name: maxplayers
+      import_transform: transform.none_if_empty(int)
+
+    - property: minplayers
+      external_name: minplayers
+      import_transform: transform.none_if_empty(int)
+
+- kind: Rating
+  connector: csv
+  connector_options:
+    import_options:
+      dialect: excel-tab
+  property_map:
+
+    - property: game
+      external_name: game_id
+      import_transform: transform.create_foreign_key('Game')
+
+    - property: rating
+      external_name: rating
+      import_transform: transform.none_if_empty(float)
+
+    - property: name
+      external_name: name
+    
+    - property: comment
+      external_name: comment
