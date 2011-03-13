@@ -1,12 +1,23 @@
-import sys
 import models
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp.util import run_wsgi_app
 
-print 'Content-Type: text/plain'
-print ''
-print 'Hello, world! This is amazing!!' + str(sys.path)
+class MainPage(webapp.RequestHandler):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.response.out.write('Hello, webapp World!')
 
+        games = models.Game.all()
+        for game in games:
+            self.response.out.write(game.title + '\n')
 
-games = models.Game.all()
+application = webapp.WSGIApplication(
+                        [('/', MainPage)],
+                        debug=True)
 
-for game in games:
-    print game.title
+def main():
+    run_wsgi_app(application)
+
+if __name__ == "__main__":
+    main()
+
