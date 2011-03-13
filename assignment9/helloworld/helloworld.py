@@ -9,28 +9,6 @@ class MainPage(webapp.RequestHandler):
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.out.write('Hello, webapp World!')
 
-        g = models.Game()
-        g.title = 'title'
-        g.publisher = 'publisher'
-        g.year_published = '2001'
-        g.description = 'description'
-        g.last_played = datetime.datetime.now()
-        g.image_name = 'image_name'
-        g.genre = 'genretest'
-        g.maxplayers = 10
-        g.minplayers = 1
-
-        g.put()
-
-        r = models.Rating()
-        r.game = g
-        r.rating = 7.2
-        r.name = 'name'
-        r.comment = 'comment'
-
-        r.put()
-
-        self.response.out.write(dir(transform))
         games = models.Game.all()
         for game in games:
 #            self.response.out.write(' '.join([game.title, game.publisher,'\n']))
