@@ -1,0 +1,5 @@
+Assignment 9 
+
+games - code for the boardgame website running on Google App Engine using django-nonrel
+
+helloworld - import_db contains code to import the original postgresql database to Google App Engine Datastore (bulkloader.yaml is the config file)
