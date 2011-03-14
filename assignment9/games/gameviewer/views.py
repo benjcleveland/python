@@ -35,16 +35,6 @@ def index(request):
     '''
     Display all the games we currently have
     '''
-    '''    f = open('games_output.csv', 'r')
-    for line in f:
-        g = Game()
-        (id, g.title, g.publisher, g.year_published, g.description, last_played, g.image_name, g.genre, maxplayers, g.minplayers) = line.split(',')
-        g.maxplayers = 10 
-        g.minplayers = 1
-        g.last_played = datetime.datetime.now()
-
-        g.save()
-   '''     
     latest_game_list = Game.objects.all()
     return render_to_response('gameviewer/index.html', {'latest_game_list':latest_game_list, 'title':'Welcome to my Board Game Collection!'})
 
