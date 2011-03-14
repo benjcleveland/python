@@ -4,3 +4,4 @@ djangotoolbox
 dbindexer
 __init__.pyc dbindexes.pyc settings.pyc urls.pyc
 gameviewer/migrations
+.gaedata
