@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 
-class Game(db.Model):
+class gameviewer_game(db.Model):
     title = db.StringProperty()
     publisher = db.StringProperty()
     year_published = db.StringProperty()
@@ -12,8 +12,8 @@ class Game(db.Model):
     minplayers = db.IntegerProperty()
     
 
-class Rating(db.Model):
-    game = db.ReferenceProperty(Game)
+class gameviewer_rating(db.Model):
+    game = db.ReferenceProperty(gameviewer_game)
     rating = db.FloatProperty()
     name = db.StringProperty()
     comment = db.StringProperty(multiline=True)

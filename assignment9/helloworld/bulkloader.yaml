@@ -24,11 +24,12 @@ python_preamble:
 - import: models
 
 transformers:
-- kind: Game 
+- kind: gameviewer_game 
   connector: csv
   property_map:
     - property: __key__
       external_name: id
+      import_transform: transform.none_if_empty(int)
 
     - property: title
       external_name: title
@@ -60,16 +61,21 @@ transformers:
       external_name: minplayers
       import_transform: transform.none_if_empty(int)
 
-- kind: Rating
+- kind: gameviewer_rating
   connector: csv
   connector_options:
     import_options:
       dialect: excel-tab
   property_map:
 
-    - property: game
+    - property: __key__
+      external_name: id
+      import_transform: transform.none_if_empty(int)
+
+    - property: game_id
       external_name: game_id
-      import_transform: transform.create_foreign_key('Game')
+      import_transform: transform.none_if_empty(int)
+      #import_transform: transform.create_foreign_key('gameviewer_game', key_is_id=True)
 
     - property: rating
       external_name: rating
