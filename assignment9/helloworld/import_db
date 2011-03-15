@@ -6,8 +6,8 @@ psql -d boardgames -F ',' -A -o games_output.csv --quiet -c "select id,title, pu
 # remove the last line from the file
 sed -ie '$d' games_output.csv
 
-#~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=games_output.csv --kind=gameviewer_game --url=http://`hostname`:8000/remote_api --application=ben-cleveland
-~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=games_output.csv --kind=gameviewer_game  --application=ben-cleveland ./
+~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=games_output.csv --kind=gameviewer_game --url=http://`hostname`:8000/remote_api --application=ben-cleveland
+#~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=games_output.csv --kind=gameviewer_game  --application=ben-cleveland ./
 
 rm rating_output.csv
 psql -H -d boardgames -F $'\t' -A -o rating_output.csv --quiet -c "select id*10 as id, game_id, rating, comment, name from gameviewer_rating;"
@@ -15,6 +15,6 @@ psql -H -d boardgames -F $'\t' -A -o rating_output.csv --quiet -c "select id*10 
 # remove the last line from the file
 sed -ie '$d' rating_output.csv
 
-#~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=rating_output.csv --kind=gameviewer_rating --url=http://`hostname`:8000/remote_api --application=ben-cleveland
-~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=rating_output.csv --kind=gameviewer_rating  --application=ben-cleveland ./
+~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=rating_output.csv --kind=gameviewer_rating --url=http://`hostname`:8000/remote_api --application=ben-cleveland
+#~/opt/google_appengine/appcfg.py upload_data --config_file=bulkloader.yaml --filename=rating_output.csv --kind=gameviewer_rating  --application=ben-cleveland ./
 

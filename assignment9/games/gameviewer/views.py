@@ -21,9 +21,9 @@ def get_average( game ):
     avg = {}
 
     ratings = Rating.objects.filter( game=game.id )
-    total = 0
+    total = 0.0 
     for rate in ratings:
-        total += rate.rating
+        total += float(rate.rating)
         
     if len( ratings ) > 0:
         avg['rating__avg'] = ('%0.2f' % (total/len(ratings)))
