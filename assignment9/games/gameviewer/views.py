@@ -35,7 +35,7 @@ def index(request):
     '''
     Display all the games we currently have
     '''
-    latest_game_list = Game.objects.all()
+    latest_game_list = Game.objects.all().order_by('title')
     return render_to_response('gameviewer/index.html', {'latest_game_list':latest_game_list, 'title':'Welcome to my Board Game Collection!'})
 
 def about(request):
